@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #f5f0ff 0%, #f0f4ff 50%, #fff0f8 100%);
+    min-height: 100vh;
+    color: #1a1a2e;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  .gradient-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card-shadow {
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.12);
+  }
+  .card-shadow-hover {
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.25);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes cardSlideLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-30px); }
+}
+
+@keyframes cardSlideRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.4s ease-out;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.3s ease-out;
+}
+
+.animate-card-enter {
+  animation: cardSlideRight 0.3s ease-out;
+}
+
+/* Card hover effect */
+.club-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.club-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(102, 126, 234, 0.2);
+}
+
+/* Button click effect */
+.btn-click {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-click:active {
+  transform: scale(0.98);
+}
+
+/* Notification badge */
+.notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  background: #f5222d;
+  border-radius: 8px;
+  font-size: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  animation: slideInDown 0.2s ease-out;
+}
+
+/* Toast notification */
+.toast-success {
+  animation: slideInUp 0.3s ease-out, fadeOut 0.3s ease-in 1.7s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+/* Match score ring */
+.match-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(#667eea var(--match-deg), #e8e0ff var(--match-deg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.match-ring::after {
+  content: '';
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f0ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8b8e8;
+  border-radius: 3px;
+}
+
+/* Tag styles */
+.tag-art { background: #fff0f8; color: #d63384; border: 1px solid #f5c2d4; }
+.tag-sport { background: #fff3e0; color: #e65c00; border: 1px solid #f5d5a8; }
+.tag-tech { background: #e8f4fd; color: #0066cc; border: 1px solid #b8d8f0; }
+.tag-welfare { background: #e8f8e8; color: #1a8a1a; border: 1px solid #b0d8b0; }
